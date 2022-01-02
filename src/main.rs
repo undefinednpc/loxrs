@@ -1,30 +1,32 @@
-use structopt::StructOpt;
+mod scanner;
 
-#[derive(StructOpt, Debug)]
-struct Opt {
-    mode: Option<String>,
-    #[structopt(required_if("mode", "run"))]
-    file: Option<String>,
+use std::io::{Write, stdin, stdout};
+use crate::scanner::Scanner;
+
+fn run_prompt() {
+    loop {
+        print!("> ");
+        stdout().flush().unwrap();
+        let mut input = String::new();
+        stdin().read_line(&mut input).unwrap();
+        let input = input.trim();
+        run(input);
+    }
 }
 
-fn run_file(name: String) {
-    println!("{}", name);
+#[allow(dead_code, unused_variables)]
+fn run_file(path: String) {
+    todo!();
 }
 
-fn run_prompt() {}
+#[allow(dead_code, unused_variables)]
+fn run(source: &str) {
+    let tokens = Scanner::scan_tokens(source);
+    for token in tokens {
+        println!("{}", token);
+    }
+}
 
 fn main() {
-    let args = Opt::from_args();
-    match args.mode {
-        Some(x) => { if x == "interactive" {
-            run_prompt();
-        } else if x == "run" {
-            match args.file {
-                Some(x) => { run_file(x) }
-                None => { println!("no file") }
-            }
-        }
-        }
-        None => { println!("no mode") }
-    };
+    run_prompt();
 }

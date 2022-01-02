@@ -19,12 +19,20 @@ fn run_file(path: String) {
     todo!();
 }
 
-#[allow(dead_code, unused_variables)]
 fn run(source: &str) {
     let tokens = Scanner::scan_tokens(source);
     for token in tokens {
         println!("{}", token);
     }
+}
+
+#[allow(dead_code)]
+fn error(line: usize, message: &str) {
+    report(line, "", message);
+}
+
+fn report(line: usize, place: &str, message: &str) {
+    println!("[Line {}] Error {}: {}", line, place, message);
 }
 
 fn main() {

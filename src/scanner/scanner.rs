@@ -1,3 +1,5 @@
+use crate::TokenType;
+
 pub struct Scanner {}
 
 impl Scanner { 

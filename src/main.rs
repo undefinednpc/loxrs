@@ -1,7 +1,7 @@
 mod scanner;
 
 use std::io::{Write, stdin, stdout};
-use crate::scanner::Scanner;
+use crate::scanner::{TokenType, Scanner};
 
 fn run_prompt() {
     loop {

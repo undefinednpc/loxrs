@@ -1,7 +1,7 @@
 mod scanner;
 
 use std::io::{Write, stdin, stdout};
-use crate::scanner::{TokenType, Scanner};
+use crate::scanner::{Scanner, TokenType, Token};
 
 fn run_prompt() {
     loop {
@@ -22,7 +22,7 @@ fn run_file(path: String) {
 fn run(source: &str) {
     let tokens = Scanner::scan_tokens(source);
     for token in tokens {
-        println!("{}", token);
+        println!("{:?}", token);
     }
 }
 

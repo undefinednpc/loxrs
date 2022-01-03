@@ -1,16 +1,14 @@
-pub enum TokenType {
-  LeftParen, RightParen, LeftBrace, RightBrace,
-  Comma, Dot, Minus, Plus, Semicolon, Slash, Star,
+use crate::TokenType;
 
-  Bang, BangEqual,
-  Equal, EqualEqual,
-  Greater, GreaterEqual,
-  Less, LessEqual,
+#[derive(Debug)]
+pub struct Token {
+    tokentype: TokenType,
+    lexeme: String,
+    line: i32,
+}
 
-  Identifier, String, Number,
-
-  And, Class, Else, False, Fun, For, If, Null, Or,
-  Print, Return, Super, This, True, Var, While,
-
-  Eof
+impl Token {
+    pub fn new(tokentype: TokenType, lexeme: String, line: i32) -> Self {
+        Token { tokentype, lexeme, line }
+    }
 }

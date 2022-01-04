@@ -4,11 +4,11 @@ use crate::TokenType;
 pub struct Token {
     tokentype: TokenType,
     lexeme: String,
-    line: i32,
+    line: usize,
 }
 
 impl Token {
-    pub fn new(tokentype: TokenType, lexeme: String, line: i32) -> Self {
+    pub fn new(tokentype: TokenType, lexeme: String, line: usize) -> Self {
         Token { tokentype, lexeme, line }
     }
 }

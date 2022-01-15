@@ -1,4 +1,4 @@
-use crate::{Token, TokenType};
+use crate::{Token, TokenType as TT};
 
 pub struct Scanner {}
 
@@ -10,16 +10,16 @@ impl Scanner {
         let mut result: Vec<Token> = Vec::new();
         for character in source.chars() {
             match character {
-                '(' => result.push(Token::new(TokenType::LeftParen, character.to_string(), line)),
-                ')' => result.push(Token::new(TokenType::RightParen, character.to_string(), line)),
-                '{' => result.push(Token::new(TokenType::LeftBrace, character.to_string(), line)),
-                '}' => result.push(Token::new(TokenType::RightParen, character.to_string(), line)),
-                ',' => result.push(Token::new(TokenType::Comma, character.to_string(), line)),
-                '.' => result.push(Token::new(TokenType::Dot, character.to_string(), line)),
-                '-' => result.push(Token::new(TokenType::Minus, character.to_string(), line)),
-                '+' => result.push(Token::new(TokenType::Plus, character.to_string(), line)),
-                ';' => result.push(Token::new(TokenType::Semicolon, character.to_string(), line)),
-                '*' => result.push(Token::new(TokenType::Star, character.to_string(), line)),
+                '(' => result.push(Token::new(TT::LeftParen, character.to_string(), line)),
+                ')' => result.push(Token::new(TT::RightParen, character.to_string(), line)),
+                '{' => result.push(Token::new(TT::LeftBrace, character.to_string(), line)),
+                '}' => result.push(Token::new(TT::RightParen, character.to_string(), line)),
+                ',' => result.push(Token::new(TT::Comma, character.to_string(), line)),
+                '.' => result.push(Token::new(TT::Dot, character.to_string(), line)),
+                '-' => result.push(Token::new(TT::Minus, character.to_string(), line)),
+                '+' => result.push(Token::new(TT::Plus, character.to_string(), line)),
+                ';' => result.push(Token::new(TT::Semicolon, character.to_string(), line)),
+                '*' => result.push(Token::new(TT::Star, character.to_string(), line)),
                 _ => todo!()
             }
         }

@@ -1,4 +1,7 @@
 mod lox;
+mod scanner;
+mod token;
+mod tokentype;
 
 use crate::lox::Lox;
 
